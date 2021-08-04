@@ -13,7 +13,11 @@ class MyAppState extends State<MyApp> {
 
   var questionNumber = 0;
 
-  var questionList = ['hello', 'hi', '안녕하세요'];
+  var questionList = [
+    'what\'s your favorite color?',
+    'what\'s your favorite fruit?',
+    'what\'s your favorite singer?'
+  ];
 
   void answerQuestion() {
     buttonClickNumber++;
@@ -34,7 +38,6 @@ class MyAppState extends State<MyApp> {
       home: Scaffold(
         body: Column(
           children: [
-            
             Question(questionList[questionNumber]),
             RaisedButton(child: Text('Button 1'), onPressed: answerQuestion),
             RaisedButton(child: Text('Button 4'), onPressed: questionFunction),
