@@ -19,8 +19,15 @@ class MyApp extends StatelessWidget {
             Text('Hello World!1'),
             Text('Hello World!2'),
             RaisedButton(child: Text('Button 1'), onPressed: answerQuestion),
-            RaisedButton(child: Text('Button 2'), onPressed: answerQuestion),
-            RaisedButton(child: Text('Button 3'), onPressed: answerQuestion),
+            RaisedButton(
+                child: Text('Button 2'),
+                onPressed: () => print('Press Button 2')),
+            RaisedButton(
+                child: Text('Button 3'),
+                onPressed: () {
+                  //....
+                  print('Press Button 3');
+                }),
           ],
         ),
         appBar: AppBar(
