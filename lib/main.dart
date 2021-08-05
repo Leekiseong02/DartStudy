@@ -15,9 +15,18 @@ class MyAppState extends State<MyApp> {
   var questionNumber = 0;
 
   var questionList = [
-    'what\'s your favorite color?',
-    'what\'s your favorite fruit?',
-    'what\'s your favorite singer?'
+    {
+      'questionText': 'what\'s your favorite color?',
+      'answerText': ['Red', 'Blue', 'Green', 'Olive'],
+    },
+    {
+      'questionText': 'what\'s your favorite fruit?',
+      'answerText': ['Apple', 'Lemon', 'Strawberry', 'Grape'],
+    },
+    {
+      'questionText': 'what\'s your favorite singer?',
+      'answerText': ['Girl\'s Generation', 'Girl\'s Day', 'Twice', '10cm'],
+    },
   ];
 
   void answerQuestion() {
