@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'question.dart';
-import 'answer.dart';
+import 'quiz.dart';
+import 'result.dart';
 
 void main() => runApp(MyApp());
 
@@ -10,7 +10,7 @@ class MyApp extends StatefulWidget {
 }
 
 class MyAppState extends State<MyApp> {
-  final questionList = const [
+  final _questionList = const [
     {
       'questionText': 'what\'s your favorite color?',
       'answerText': ['Red', 'Blue', 'Green', 'Olive'],
@@ -24,13 +24,12 @@ class MyAppState extends State<MyApp> {
       'answerText': ['Girl\'s Generation', 'Girl\'s Day', 'Twice', '10cm'],
     },
   ];
-  var buttonClickNumber = 0;
 
-  var questionNumber = 0;
+  var _questionNumber = 0;
 
   void questionFunction() {
-    setState(() => questionNumber = questionNumber + 1);
-    if (questionNumber < questionList.length) {
+    setState(() => _questionNumber = _questionNumber + 1);
+    if (_questionNumber < _questionList.length) {
       print('We have more questions!');
     } else {
       print('We have no question');
@@ -41,20 +40,13 @@ class MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: questionNumber < questionList.length
-            ? Column(
-                children: [
-                  Question(questionList[questionNumber]['questionText']),
-                  ...(questionList[questionNumber]['answerText']
-                          as List<String>)
-                      .map((answer) {
-                    return Answer(questionFunction, answer);
-                  }).toList()
-                ],
+        body: _questionNumber < _questionList.length
+            ? Quiz(
+                questionList: _questionList,
+                questionFunction: questionFunction,
+                questionNumber: _questionNumber,
               )
-            : Center(
-                child: Text('You did it!'),
-              ),
+            : Result(),
         appBar: AppBar(
           title: Text('My First App'),
         ),
