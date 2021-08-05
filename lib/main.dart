@@ -29,16 +29,8 @@ class MyAppState extends State<MyApp> {
     },
   ];
 
-  void answerQuestion() {
-    buttonClickNumber++;
-    print(buttonClickNumber);
-  }
-
   void questionFunction() {
-    setState(() {
-      questionNumber++;
-      if (questionNumber == 3) questionNumber = 0;
-    });
+    setState(() => questionNumber = questionNumber + 1);
     print(questionList[questionNumber]);
   }
 
@@ -48,10 +40,11 @@ class MyAppState extends State<MyApp> {
       home: Scaffold(
         body: Column(
           children: [
-            Question(questionList[questionNumber]),
-            Answer(questionFunction),
-            Answer(questionFunction),
-            Answer(questionFunction),
+            Question(questionList[questionNumber]['questionText']),
+            ...(questionList[questionNumber]['answerText'] as List<String>)
+                .map((answer) {
+              return Answer(questionFunction, answer);
+            }).toList()
           ],
         ),
         appBar: AppBar(
