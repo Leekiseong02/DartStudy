@@ -10,11 +10,7 @@ class MyApp extends StatefulWidget {
 }
 
 class MyAppState extends State<MyApp> {
-  var buttonClickNumber = 0;
-
-  var questionNumber = 0;
-
-  var questionList = [
+  final questionList = const [
     {
       'questionText': 'what\'s your favorite color?',
       'answerText': ['Red', 'Blue', 'Green', 'Olive'],
@@ -28,10 +24,15 @@ class MyAppState extends State<MyApp> {
       'answerText': ['Girl\'s Generation', 'Girl\'s Day', 'Twice', '10cm'],
     },
   ];
+  var buttonClickNumber = 0;
+
+  var questionNumber = 0;
 
   void questionFunction() {
+    if (questionNumber < questionList.length) {
+      print('We have more questions!');
+    }
     setState(() => questionNumber = questionNumber + 1);
-    print(questionList[questionNumber]);
   }
 
   @override
