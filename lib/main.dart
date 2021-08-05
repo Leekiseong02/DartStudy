@@ -29,25 +29,32 @@ class MyAppState extends State<MyApp> {
   var questionNumber = 0;
 
   void questionFunction() {
+    setState(() => questionNumber = questionNumber + 1);
     if (questionNumber < questionList.length) {
       print('We have more questions!');
+    } else {
+      print('We have no question');
     }
-    setState(() => questionNumber = questionNumber + 1);
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: Column(
-          children: [
-            Question(questionList[questionNumber]['questionText']),
-            ...(questionList[questionNumber]['answerText'] as List<String>)
-                .map((answer) {
-              return Answer(questionFunction, answer);
-            }).toList()
-          ],
-        ),
+        body: questionNumber < questionList.length
+            ? Column(
+                children: [
+                  Question(questionList[questionNumber]['questionText']),
+                  ...(questionList[questionNumber]['answerText']
+                          as List<String>)
+                      .map((answer) {
+                    return Answer(questionFunction, answer);
+                  }).toList()
+                ],
+              )
+            : Center(
+                child: Text('You did it!'),
+              ),
         appBar: AppBar(
           title: Text('My First App'),
         ),
