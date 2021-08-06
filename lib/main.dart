@@ -13,21 +13,38 @@ class MyAppState extends State<MyApp> {
   final _questionList = const [
     {
       'questionText': 'what\'s your favorite color?',
-      'answerText': ['Red', 'Blue', 'Green', 'Olive'],
+      'answerText': [
+        {'Text': 'Red', 'Score': 10},
+        {'Text': 'Blue', 'Score': 8},
+        {'Text': 'Green', 'Score': 6},
+        {'Text': 'White', 'Score': 4},
+      ],
     },
     {
       'questionText': 'what\'s your favorite fruit?',
-      'answerText': ['Apple', 'Lemon', 'Strawberry', 'Grape'],
+      'answerText': [
+        {'Text': 'Apple', 'Score': 10},
+        {'Text': 'Strawberry', 'Score': 8},
+        {'Text': 'Grape', 'Score': 6},
+        {'Text': 'Lemon', 'Score': 4},
+      ],
     },
     {
       'questionText': 'what\'s your favorite singer?',
-      'answerText': ['Girl\'s Generation', 'Girl\'s Day', 'Twice', '10cm'],
+      'answerText': [
+        {'Text': 'Twice', 'Score': 10},
+        {'Text': 'Girl\'s Generation', 'Score': 8},
+        {'Text': '10cm', 'Score': 6},
+        {'Text': 'IU', 'Score': 4}
+      ],
     },
   ];
+  var _totalScore = 0;
 
   var _questionNumber = 0;
 
-  void questionFunction() {
+  void questionFunction(int score) {
+    _totalScore += score;
     setState(() => _questionNumber = _questionNumber + 1);
     if (_questionNumber < _questionList.length) {
       print('We have more questions!');
