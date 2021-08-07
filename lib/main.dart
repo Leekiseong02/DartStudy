@@ -63,7 +63,7 @@ class MyAppState extends State<MyApp> {
                 questionFunction: questionFunction,
                 questionNumber: _questionNumber,
               )
-            : Result(),
+            : Result(_totalScore),
         appBar: AppBar(
           title: Text('My First App'),
         ),
