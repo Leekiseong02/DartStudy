@@ -42,6 +42,12 @@ class MyAppState extends State<MyApp> {
   var _totalScore = 0;
 
   var _questionNumber = 0;
+  void _resetQuiz() {
+    setState(() {
+      _totalScore = 0;
+      _questionNumber = 0;
+    });
+  }
 
   void questionFunction(int score) {
     _totalScore += score;
@@ -63,7 +69,7 @@ class MyAppState extends State<MyApp> {
                 questionFunction: questionFunction,
                 questionNumber: _questionNumber,
               )
-            : Result(_totalScore),
+            : Result(_totalScore, _resetQuiz),
         appBar: AppBar(
           title: Text('My First App'),
         ),
